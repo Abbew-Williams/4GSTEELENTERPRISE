@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floors</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/282997817_105715128815874_6893584758455217521_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeF6tYBkdonVA7pcGhb_y3b8uwe0UFTBF4C7B7RQVMEXgCDlQE2z7v9h7FdonxVJT8ZIEVv1gjXUjPJ3wZbLM40D&_nc_ohc=kOmAUNvgiKgQ7kNvgE5jpve&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=AkABzM7TZbo_JhQujDQW8fe&oh=00_AYC5O5vPLjJTaNgkq950RdUPGQD_FXvZMJSyvUgdBRaOEQ&oe=671487D5') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            padding-top: 60px;
+            overflow-x: hidden;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 4em;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+        nav {
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            animation: slideDown 1.5s ease-in-out;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav ul li {
+            float: left;
+        }
+        nav ul li a {
+            display: block;
+            color: #ffdd57;
+            font-size: 1.5em;
+            text-align: center;
+            padding: 16px 24px;
+            text-decoration: none;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: white;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #ffdd57;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .container {
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.9);
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 10px;
+            animation: fadeInUp 2s ease-in-out;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .container h1, .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: slideInFromBottom 2s ease-in-out;
+        }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+        }
+        .image-gallery img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            filter: blur(3px);
+            cursor: pointer;
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+        .image-gallery img:hover {
+            filter: none;
+            transform: scale(1.3);
+            z-index: 10;
+        }
+        .row-A {
+            grid-column: span 0;
+            align-items: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        footer p {
+            margin: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInFromBottom {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>4G STEEL ENTERPRISE</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="homepage.html#services">Services</a></li>
+        <li><a href="homepage.html#about">About</a></li>
+        <li><a href="homepage.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2>Our Stairs Services</h2>
+    <div class="content">
+        <p>At 4G STEEL ENTERPRISE, we specialize in designing and fabricating high-quality steel stairs for residential, commercial, and industrial use. Our stairs are built to last, offering both safety and aesthetic appeal. We work closely with our clients to ensure that each project meets their exact specifications and requirements.</p>
+        <p>Whether you need a simple staircase or a complex multi-level solution, we have the expertise and experience to deliver exceptional results.</p>
+    </div>
+
+    <div class="image-gallery">
+        <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/454725755_481294347987164_1665859697391224844_n.jpg?stp=c0.21.194.194a_dst-jpg_s194x194&_nc_cat=107&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeF9j35srllGOpiTY9oZdKm6jL8voKyGxDCMvy-grIbEMD3vwOmvHJSsLhzC5PerBKLriKgyFfHG1raReSHDQOSk&_nc_ohc=8bqbkccPtdcQ7kNvgFJbxNt&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=AInhK5LhFb43R_EfavhEPEv&oh=00_AYB5ryNkKUYD5MzjQv8xpaxBHTVNOftCriIa65CsxCfPLQ&oe=6715976C" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/454716404_481290441320888_8662489977443308136_n.jpg?stp=c0.59.540.540a_dst-jpg_s206x206&_nc_cat=101&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeFPqU01ibBg_53kz6nl2OYpnGaFxNEL20WcZoXE0QvbRdO3cCVl9imaYsP_ukz8e5CUUIGhaCDj4zWf58gZyx-e&_nc_ohc=QTIWtZpbqkQQ7kNvgEH51uQ&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=AInhK5LhFb43R_EfavhEPEv&oh=00_AYAPygGePG25MTRZ-3zIeZhaNZ5fhdQAVTugDtZnuadghg&oe=6715786A" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/454583742_481290357987563_7360509386826322344_n.jpg?stp=c33.0.194.194a_dst-jpg_s194x194&_nc_cat=108&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHdmcWJ2qaMXfK3kWhtIyhXQgSHEJflwMdCBIcQl-XAxwOBX1ElufyFV00CSc4NuItiaq5z99tLkaBSuw29tSaa&_nc_ohc=3r2DOpIrK7MQ7kNvgGDY3FW&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AInhK5LhFb43R_EfavhEPEv&oh=00_AYCQlkcjLOX6v7n-F25MEEhTYIJQZ-LdIC4FpUIGBLMKmA&oe=67158DB6" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/454642245_481290361320896_4391771450612775089_n.jpg?stp=dst-jpg_s206x206&_nc_cat=100&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeGSRsiWoS5foPheKCAzIvab8925Mze9eKjz3bkzN714qD88qmRlf1_lW94Gf2c3k6-o-Am4M67AcLJgZt9MI76y&_nc_ohc=oqAPLtb1OI8Q7kNvgF0vYw6&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AInhK5LhFb43R_EfavhEPEv&oh=00_AYCZZ0F0mT2svKGvbKit9-8XHmhSZ7jzy7i6MRiRZxJfjA&oe=6715843E" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/454695576_481290347987564_5875876777985052963_n.jpg?stp=c0.14.205.205a_dst-jpg_s205x205&_nc_cat=100&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHY4fzXI8dvkgFmOGF8hvRpqj6lp_kr9miqPqWn-Sv2aOTXSBUm3BZ46isE0g7A_kIHezAdZBB5sIEc7mnULQ6L&_nc_ohc=NGYRQrFHa30Q7kNvgGSi2j1&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AInhK5LhFb43R_EfavhEPEv&oh=00_AYCB7O_Nb834-BWtQfv80qg5Knzl2tqVtcY2_P-E2rOAQQ&oe=6715A58E" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/454737317_481290304654235_6752987464919487874_n.jpg?stp=c66.0.168.168a_dst-jpg_s168x168&_nc_cat=109&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeEzCRtcVV3OFIEYy_j0egIzW3dzxqoYCupbd3PGqhgK6pwjHGyu7e2T_fwpy5PclNlcI842ukCq8EqXX2T02-Np&_nc_ohc=Yet1TF0sIKkQ7kNvgGvlaPa&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=AInhK5LhFb43R_EfavhEPEv&oh=00_AYBmIhI0ba5dEfdHOz3P3C6k82vC5uCgxIuQ8o79Td5X2g&oe=67159046" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/454942258_481290274654238_5835030852904721510_n.jpg?stp=dst-jpg_s206x206&_nc_cat=103&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeFZVnO2yGX5hrcDdy9aCFf1r6NzGh5Uj7yvo3MaHlSPvI7E_FiiGjy5CSXRiAmqGV1MNcC77_NmmLcGl16c299H&_nc_ohc=89lOEveG3acQ7kNvgGnv99R&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AInhK5LhFb43R_EfavhEPEv&oh=00_AYBe9qGwBvUVvn4y1n7c3w7nSyXckIW580TU7uIjkuqjbg&oe=67157A9B" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/454792555_481290277987571_9102064138920270566_n.jpg?stp=c33.0.194.194a_dst-jpg_s194x194&_nc_cat=107&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHd2hk7jHBqmq9-idFcIitIil32OfuHFSGKXfY5-4cVIZBZNc41F8LTbBP_0qDSz3vNncW9TkTKt71u8v3P_-4O&_nc_ohc=Y9YQhFjzGmoQ7kNvgHhqTSh&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=A6teSsWvcvUv_l_fRuc_8uY&oh=00_AYCZMeOUWFwhZ8FLR4fkVfasGuilALRFEw3L96apoWb6dA&oe=6715A0BA" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/454697513_481290271320905_4283245314427320341_n.jpg?stp=c66.0.168.168a_dst-jpg_s168x168&_nc_cat=111&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeFiL7U061psm5PvAI1gyIsSP49LkMjnPIc_j0uQyOc8h91ELXl7eby_g297JHOLfxtuIG4vrrRhjdnHBsrp8Tsa&_nc_ohc=TyBWDNN81B4Q7kNvgFTZYm7&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=A6teSsWvcvUv_l_fRuc_8uY&oh=00_AYCpZhOrzK00I-VQCUdi-2ywm_oHrVicGM9hVCXTlKyTSA&oe=67158C1E" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/454752612_481290267987572_5520616481898158029_n.jpg?stp=c33.0.194.194a_dst-jpg_s194x194&_nc_cat=102&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeERzHxddXWWlU6oA6stDwCqBqS2QEoKfJoGpLZASgp8mkiZvh3oxzPHS_mbFiHUjt2nQVfiHGaSd_4-6Ez2wWvN&_nc_ohc=L0tApdhOvvcQ7kNvgEKAk_6&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=A6teSsWvcvUv_l_fRuc_8uY&oh=00_AYAPP4zs41PcLwUJRcJPOxFkfFCP8O4QHRW4hLSifkrZnA&oe=67159843" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/454767022_481290234654242_366609774133239688_n.jpg?stp=c33.0.194.194a_dst-jpg_s194x194&_nc_cat=110&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHogESeteQyJNcnlWGKW6Yikcm11p7GApiRybXWnsYCmEIrx9KeqTm6mFCTSddvEG7jM8-ytLxzwBW4LRq5YJEV&_nc_ohc=kABaqSg4OsoQ7kNvgGj8gNA&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=A6teSsWvcvUv_l_fRuc_8uY&oh=00_AYBh_GTF9LSw8poRp4D1HkAsvY6-712wrMW6bXIEiKWUeQ&oe=6715A426" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/454765598_481290251320907_8451562580199249287_n.jpg?stp=c33.0.194.194a_dst-jpg_s194x194&_nc_cat=111&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeH_DcXFFeMuMsy9xv06Mx06ZkCshzrm971mQKyHOub3vQsAMPUgOIvenBoPoEvjrSnpD2ukViH8vhKNxuIgzyIn&_nc_ohc=sKbElirp3oMQ7kNvgGCjA5n&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=A6teSsWvcvUv_l_fRuc_8uY&oh=00_AYBY8oEeFWXXgO0GGYLDwwCzq9NNHAvpDv2ZxUBr6WTpRQ&oe=67159566" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/282997817_105715128815874_6893584758455217521_n.jpg?stp=dst-jpg_s206x206&_nc_cat=107&ccb=1-7&_nc_sid=7a06f5&_nc_eui2=AeF6tYBkdonVA7pcGhb_y3b8uwe0UFTBF4C7B7RQVMEXgCDlQE2z7v9h7FdonxVJT8ZIEVv1gjXUjPJ3wZbLM40D&_nc_ohc=O-QDyKrNResQ7kNvgFK92nf&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=AH0mAHMgnqdMauUzyCG6VOY&oh=00_AYDA8oaxaG4T2iiCyqYAmCgyKqoDPdbZDVL7UdNs8SraFA&oe=6715A115" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/302453212_145044328216287_7543349980871385227_n.jpg?stp=c90.0.540.540a_dst-jpg_s206x206&_nc_cat=100&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHtFn5FPkFSFsEnbIytRYOuOkjLWuYSiDs6SMta5hKIO0D9Zlv9jAWTUKkU01L0nvQkEtsVIvUqKlQa7qIc17ga&_nc_ohc=4iHdpTSqSbUQ7kNvgFN9h5h&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AAm9VYxN-8ojidMgStXTPZW&oh=00_AYDWM7ScHMPWuOwZnrcy1dzQF8j0rd7xba2GInxs4X4dEQ&oe=67159557" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/302252130_145044281549625_1227774216209466135_n.jpg?stp=c196.0.324.324a_dst-jpg_s206x206&_nc_cat=105&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeEOEfhm8KhQ0FauiWDBMEKylDP9dTr60zeUM_11OvrTN9BMW4n_tMHESkDjHf4f6np-GHHRYZ22ZgyKSL7jVbOq&_nc_ohc=xF5xZihd-XwQ7kNvgFctUiF&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AAm9VYxN-8ojidMgStXTPZW&oh=00_AYBvbRl4wUpsDMbYoOkDP19G9aKDDoffWmUmSbXdjRVFWg&oe=6715955D" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/288362509_125709126816474_3108668301355292358_n.jpg?stp=c0.83.750.750a_dst-jpg_s206x206&_nc_cat=100&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeFvioGW0_N-UwBPDJHhuSwjqkZV0MDraNKqRlXQwOto0mRuU93kzfGSg1OEMec7ba0b8Cl9SYNVfsZSMst4ecXI&_nc_ohc=4nB_-09wrkkQ7kNvgFgcnpg&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AFkGZSUbz79Ra00j6wAcWiY&oh=00_AYAuk9Bb-yWc60XOaSJUXgxpDtiDu5Bp7DC2TjrUvLVDiQ&oe=67158904" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/288683762_125709106816476_9022968950494748051_n.jpg?stp=c0.83.750.750a_dst-jpg_s206x206&_nc_cat=100&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHWKSQJ-RoAMMTDBx8dmC1vd2DlcIUqVEx3YOVwhSpUTIgNg2b6ibbwdVaQio2px8epLgS14Kv404BoMv1falDY&_nc_ohc=_taMu3PzrA8Q7kNvgGZcg6D&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AFkGZSUbz79Ra00j6wAcWiY&oh=00_AYCKiW_zvaae3yCVRK2XfTqMar7zrL2aolxyoMCS60IFNA&oe=671583C7" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/289003438_125709083483145_518362497437789791_n.jpg?stp=c0.83.750.750a_dst-jpg_s206x206&_nc_cat=104&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeEljd5mYOF9fkBb6gMLNppd-zAK3vrp_xz7MAre-un_HCWrjeU5gmeVKWEcT7RNcomXG7HvCRiZrMYtZUi79Nlh&_nc_ohc=AlP61zAEUVMQ7kNvgH_iWL-&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AFkGZSUbz79Ra00j6wAcWiY&oh=00_AYDNA1EU6AKbboApl4XU2Py9c5DVbSGhplg1E8QfY4hfGw&oe=6715A289" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/281960282_111566564897397_4948351902659609624_n.jpg?stp=c0.155.705.705a_dst-jpg_s206x206&_nc_cat=103&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeE56-cxw6_BnMLUovHyH9iEOXoPPQa2Q7Q5eg89BrZDtKurqlIRK5Fz4_0_7IIyTr_XVBdu4V56ZP5XK7yDAp28&_nc_ohc=iEO6gk6n1HsQ7kNvgGHdVhO&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AoRpCNOHNJjU26GiyrRR04i&oh=00_AYAiXJ-1SYBNzVSYQyTVwNIcznMlHu-FD0kFiOzlDO3LPg&oe=671593AF" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/281568970_105743412146379_6415978783942912672_n.jpg?stp=c0.170.661.661a_dst-jpg_s206x206&_nc_cat=108&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeGQATbuqN4_BbRg-Ld23WmUnWXTm3W5saadZdObdbmxpmtUOOYU6cYLplVTFOe472CCrVrQqDsPhH94TMzQq0Tw&_nc_ohc=Okiw6jfPSiMQ7kNvgFV1_pg&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AUcsejD_rDK3EMCKVAzKx4r&oh=00_AYCkasdL1MoIqETzfwsSug57ZxZlDwT9XrFA-4AF9S_zOg&oe=6715A5B5" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/281342460_105743212146399_4534769211927244222_n.jpg?stp=c158.0.405.405a_dst-jpg_s206x206&_nc_cat=104&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeGkZ7mVP4RUHrI_JaR6Qs-MqiZlvXmhf2-qJmW9eaF_b0s9CINWpk8GeoClexpCxAEc1Rgih6tKYOsUmt1jJYi1&_nc_ohc=NzuxzH-aM6kQ7kNvgHSQ0GD&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AUcsejD_rDK3EMCKVAzKx4r&oh=00_AYAwxsKBaJBeIhXML_T-v--loWPJcjZBz2gkzwXo-6aWbA&oe=67157DC8" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/281198879_105743202146400_845843316969520941_n.jpg?stp=c158.0.405.405a_dst-jpg_s206x206&_nc_cat=105&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeEM-RVr3SJPol1PyoNxdtvtx5H7nh2frZjHkfueHZ-tmF5eIFMWHY-IeX9nKpTXWKbMAzXi7VADF-Xfyy1iZaY8&_nc_ohc=6p9TpB9R58IQ7kNvgEINE7a&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AUcsejD_rDK3EMCKVAzKx4r&oh=00_AYASPMlRXFoFXYc6LmC_jJIWPtZT9hAbmEdi0i3-DNdsTQ&oe=6715A830" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/280730649_105742828813104_334622307132255583_n.jpg?stp=c0.152.715.715a_dst-jpg_s206x206&_nc_cat=103&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeFHYGox59iO6QtuqXZiNt4sXgdXjgJCLEpeB1eOAkIsSuwszYI_jVwUdMOr5uNEkvu3Z0SuPsd-Bap20m4anGR4&_nc_ohc=J_6FfWECPhoQ7kNvgHDvJB7&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=A83xNRhmqXUtHOhkHw2Kpij&oh=00_AYAdUq0UCJ3FL_H4eGdDmm_1eXddAnfLYkA3oFwclCdgCg&oe=67158203" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/280924307_105742705479783_7254703526313266985_n.jpg?stp=c141.0.438.438a_dst-jpg_s206x206&_nc_cat=100&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeEqTPixzedoqCZzlgZC8lUn4YYbTAfYQ2_hhhtMB9hDb6X-D7bL_Rt8pvZ1Sa5t5bMtIL54BaZYFPWnogFnBCBL&_nc_ohc=KckSPCRPlscQ7kNvgFLkbFB&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=A83xNRhmqXUtHOhkHw2Kpij&oh=00_AYDy5EogvD7NUlNgNR927GMi85NvchRgD0Bw2x_zT-WCrw&oe=6715857C" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/281329959_105742778813109_6774835249025296966_n.jpg?stp=c0.152.715.715a_dst-jpg_s206x206&_nc_cat=104&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHyfxCqF5feWDygXlez-xIoyXUdQv64zJDJdR1C_rjMkHbyCEG9H6qmFOIuE4d6iwPp3W0fWjOfZ3-5zjDwGCJj&_nc_ohc=OLQx3mQJDPAQ7kNvgFDHLWl&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=A83xNRhmqXUtHOhkHw2Kpij&oh=00_AYAb_wYvSRVxr-Uw-7nuuCs_K9pzUTTziL1r3hqPBjtlAQ&oe=671598DE" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/281391125_105742695479784_8555100085522921037_n.jpg?stp=c158.0.405.405a_dst-jpg_s206x206&_nc_cat=103&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeEckTD3zfJODHUANEuVaJQLa1jbQqxPEchrWNtCrE8RyPmZIDKP1AgO0hV3tj9OWQ-GP0UuEugIMrgD3u0p8RaQ&_nc_ohc=8JLvofVISiEQ7kNvgEMjU63&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=A83xNRhmqXUtHOhkHw2Kpij&oh=00_AYCk8X1ml5EWw8iyU6dadZV_Y8tNH97c1AIQsexQOUQ4YA&oe=6715AAFF" alt="floor 1" class="row-A">
+        <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/304922031_145044278216292_4463259625296911520_n.jpg?stp=c197.0.321.321a_dst-jpg_s206x206&_nc_cat=110&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeG1K_RdTbOIANFJWnAB79jlMLxj0G0maF4wvGPQbSZoXj1kXhbRcME7YTsCcDlNioKQWSQQA-hfeoMJGGwV1ygQ&_nc_ohc=iBNsyXu8dk0Q7kNvgGIkWwf&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=AAm9VYxN-8ojidMgStXTPZW&oh=00_AYCdi09QVv8m8BDhtw_c3_jQ-2k32F5PeHklsj1Tci7r1Q&oe=6715ADC1" alt="floor 1" class="row-A">
+
+    </div>
+</div>
+<footer>
+    <p>&copy; 2000 4G STEEL ENTERPRISE. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

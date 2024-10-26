@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/282997817_105715128815874_6893584758455217521_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeF6tYBkdonVA7pcGhb_y3b8uwe0UFTBF4C7B7RQVMEXgCDlQE2z7v9h7FdonxVJT8ZIEVv1gjXUjPJ3wZbLM40D&_nc_ohc=kOmAUNvgiKgQ7kNvgE5jpve&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=AkABzM7TZbo_JhQujDQW8fe&oh=00_AYC5O5vPLjJTaNgkq950RdUPGQD_FXvZMJSyvUgdBRaOEQ&oe=671487D5') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            padding-top: 60px; 
+            overflow-x: hidden;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 4.5em;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+        nav {
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            animation: slideDown 1.5s ease-in-out;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav ul li {
+            float: left;
+        }
+        nav ul li a {
+            display: block;
+            color: #ffdd57;
+            font-size: 1.8em;
+            text-align: center;
+            padding: 16px 24px;
+            text-decoration: none;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: white;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #ffdd57;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .container {
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.9);
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 10px;
+            animation: fadeInUp 2s ease-in-out;
+        }
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            animation: slideInFromBottom 2s ease-in-out;
+        }
+        .container p {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .team-member {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            animation: fadeInUp 1.5s ease-in-out;
+            display: flex;
+            align-items: center;
+        }
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .team-member h3 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .team-member p {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+        .team-member .contact-link {
+            color: #ffdd57;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        footer p {
+            margin: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInFromBottom {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>4G STEEL ENTERPRISE</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="homepage.html#home">Home</a></li>
+        <li><a href="homepage.html#services">Services</a></li>
+        <li><a href="homepage.html#about">About</a></li>
+        <li><a href="homepage.html#contact">Contact</a></li>
+        <li><a href="homepage.html#purchased">Purchased</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2>About Us</h2>
+    <p>At 4G STEEL ENTERPRISE, we are dedicated to leading the steel industry with excellence. Our mission is to deliver top-quality steel products and services that exceed customer expectations. Our team of experts works diligently to provide innovative solutions tailored to your specific needs. We believe in building strong, lasting relationships with our clients through trust and outstanding service.</p>
+
+    <h2>Our Mission</h2>
+    <p>Our mission is to be the leading provider of high-quality steel products and services in the industry. We strive to exceed our customers' expectations through innovation, exceptional service, and commitment to excellence.</p>
+
+    <h2>Our Vision</h2>
+    <p>We envision a future where 4G STEEL ENTERPRISE is recognized globally for its superior steel products, cutting-edge technology, and unparalleled customer service. Our goal is to drive industry standards and be the first choice for steel solutions.</p>
+
+    <h2>Our Values</h2>
+    <p>Integrity, quality, and customer satisfaction are the core values that guide our operations. We are committed to ethical practices, continuous improvement, and delivering value to our clients.</p>
+    
+    <h2>Our Team</h2>
+    <div class="team-member">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/454910475_482401067876492_2255133931020353560_n.jpg?stp=c0.118.715.715a_dst-jpg_s206x206&_nc_cat=102&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeGC_vlrmf1bfOoVhrH2VaFXtaWXNb06V4y1pZc1vTpXjIxbDtH8VyuCZ1j4oSzqu5DKj11BhFXW0_3bOvgquE8c&_nc_ohc=Bjo_fwmlBYUQ7kNvgFxzAYA&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=ADKgElsam51RfjAeACTurB0&oh=00_AYD83QvJa2moj0s5ttLXOr_PEek62V8NyCx79UELflV9VQ&oe=67158046" alt="Abbew-Williams Enoch">
+        <div>
+            <h3>Abbew-Williams Enoch</h3>
+            <!--He is the best-->
+            <p><strong>C E O</strong></p>
+            <p><strong>Chief Executive Officer</strong></p>
+            <p>Abbew-Williams Enoch is the visionary behind 4G STEEL ENTERPRISE, leading the company with dedication and expertise. With a deep understanding of the industry, he drives the company's strategic direction and ensures the highest standards of quality and service.</p>
+            <p>Phone: <a href="tel:+233241577555" class="contact-link">+233 24 157 7555</a></p>
+        </div>
+    </div>
+    <div class="team-member">
+        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/457515586_496570396459559_4330462170700125218_n.jpg?stp=c0.156.607.607a_dst-jpg_s206x206&_nc_cat=106&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeFlQD9JSBKtpDzljTAIek-rZVagOKwMscxlVqA4rAyxzEWLlLU59PALmH_cH7j2CX4TKfyGqFiP1tVCvInk8tDe&_nc_ohc=WXOnpEQTMccQ7kNvgGiWiYz&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=A_05t9RAEtw1Mj17erqWOdF&oh=00_AYBTqbjR8OeQrd97WhoFjFTHRT2WkTzJwEFVDfXoocEYSQ&oe=671496D8" alt="Elvis Gartey">
+        <div>
+            <h3>Elvis Ghartey</h3>
+            <p><strong>C F O</strong></p>
+            <p><strong>Chief Financial Officer</strong></p>
+            <p>As the Chief Financial Officer, Elvis Gartey oversees the financial operations of 4G STEEL ENTERPRISE. His expertise in financial management ensures the company's financial health and stability, supporting its growth and success.</p>
+            <p>Phone: <a href="tel:+233553543383" class="contact-link">+233 55 354 3383</a></p>
+            
+        </div>
+    </div>
+    <div class="team-member">
+        <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/455694645_485807800869152_837214324752724360_n.jpg?stp=c0.175.480.480a_dst-jpg_s206x206&_nc_cat=101&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHRYRA1FYA766lpIZW_XECXRdDDMr0P4h9F0MMyvQ_iHwhV_cJ4vCm5yoi_ySapsx3C_zgbEGg_P2wPfLGI7DJU&_nc_ohc=L0LhqBkmjToQ7kNvgEaWXjr&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=A4Nc8zXW7rK4_oWxDFWwVOB&oh=00_AYB0iK2JbT7RksN0-rRa7GwrPsjDgsXej_u1gnEML9h8IQ&oe=6714873A" alt="Elizer Arthur">
+        <div>
+            <h3>Elizer Arthur</h3>
+            <p><strong>C I O</strong></p>
+            <p><strong>Chief Information Officer</strong></p>
+            <p>Elizer Arthur is responsible for the company's information technology strategy and operations. Her role involves ensuring that our IT systems support business objectives and maintain efficiency.</p>
+            <p>Phone: <a href="tel:+233543138996" class="contact-link">+233 54 313 8996</a></p>
+        </div>
+    </div>
+    <div class="team-member">
+        <img src="" alt="Daniel">
+        <div>
+            <h3>Daniel</h3>
+            <p><strong>C M O</strong></p>
+            <p><strong>Chief Marketing Officer</strong></p>
+            <p>Daniel supports the company's IT infrastructure, focusing on improving technology and processes to enhance productivity and performance.</p>
+            <p>Phone: <a href="tel:+233556720620" class="contact-link">+233 55 672 0620</a></p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2000 4G STEEL ENTERPRISE. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

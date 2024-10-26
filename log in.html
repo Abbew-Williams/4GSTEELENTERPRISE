@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/282997817_105715128815874_6893584758455217521_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeF6tYBkdonVA7pcGhb_y3b8uwe0UFTBF4C7B7RQVMEXgCDlQE2z7v9h7FdonxVJT8ZIEVv1gjXUjPJ3wZbLM40D&_nc_ohc=kOmAUNvgiKgQ7kNvgE5jpve&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=AkABzM7TZbo_JhQujDQW8fe&oh=00_AYC5O5vPLjJTaNgkq950RdUPGQD_FXvZMJSyvUgdBRaOEQ&oe=671487D5') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            animation: slideInFromTop 1.5s ease-in-out;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+        }
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffdd57;
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #e6c84b;
+        }
+        .login-container a {
+            color: #ffdd57;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+
+       
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInFromTop {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+    <script>
+        function validateLogin(event) {
+            event.preventDefault();
+            
+            
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            
+            const storedUsername = localStorage.getItem("username");
+            const storedPassword = localStorage.getItem("password");
+            
+            
+            if (username === storedUsername && password === storedPassword) {
+                alert("Login successful!");
+                window.location.href = "homepage.html";  
+            } else {
+                alert("Invalid username or password.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login to 4G STEEL ENTERPRISE</h2>
+    <form onsubmit="validateLogin(event)">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="submit" value="Login">
+    </form>
+    <a href="forgot password.html">Forgot Password</a>
+    <a href="create an account.html">Create New Account</a>
+</div>
+
+</body>
+</html>

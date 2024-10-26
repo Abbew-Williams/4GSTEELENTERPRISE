@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimate</title>
+    <style>
+         body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background: url('https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/282997817_105715128815874_6893584758455217521_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeF6tYBkdonVA7pcGhb_y3b8uwe0UFTBF4C7B7RQVMEXgCDlQE2z7v9h7FdonxVJT8ZIEVv1gjXUjPJ3wZbLM40D&_nc_ohc=kOmAUNvgiKgQ7kNvgE5jpve&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=AkABzM7TZbo_JhQujDQW8fe&oh=00_AYC5O5vPLjJTaNgkq950RdUPGQD_FXvZMJSyvUgdBRaOEQ&oe=671487D5') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .navbar {
+            width: 100%;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .navbar a {
+            display: block;
+            color: #ffffff; 
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            background-color: #ffdd57; 
+            color: #ffffff; 
+            transform: scale(1.1);
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .box-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; 
+            position: relative;
+            width: 100%;
+        }
+
+        .box {
+            width: 250px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .content {
+            padding: 100px 20px;
+            text-align: center;
+            margin-top: 60px;
+            font-size: x-large;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .calculator {
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+            color: #ffdd57;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(18, 184, 170, 0.5);
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        @keyframes bounceIn {
+            from { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.05); }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .calculator select, .calculator input[type="number"], .calculator input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .calculator select, .calculator input[type="number"] {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .calculator input[type="button"] {
+            background-color: #ffdd57;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .calculator input[type="button"]:hover {
+            background-color: #efef75;
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .price-info {
+            margin: 10px 0;
+            font-size: 1em;
+            color: #f4f801;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(3px);
+            transition: filter 0.5s ease;
+        }
+
+        .box:hover img {
+            filter: blur(0);
+        }
+
+        .box .text {
+            position: absolute;
+            color: #0400ff;
+            font-size: 3em;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .box:hover .text {
+            opacity: 1;
+        }
+
+        .hidden-box {
+            width: 250px;
+            height: 250px;
+            border: 2px solid #aa6f6f;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            background: linear-gradient(135deg,orange,white);
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.5s ease;
+            position: absolute;
+            left: 260px;
+            z-index: -1;
+            color: rgb(0, 0, 0);
+        }
+
+        .row:hover .hidden-box {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 1;
+        }
+
+        .hidden-box h2 {
+            margin-top: 0;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent; 
+            border-left: 20px solid #7f6911;
+            position: absolute;
+            left: 260px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 1;
+        }
+
+        .row:hover .arrow {
+            opacity: 1;
+        }
+
+        .buy-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-btn:hover {
+            background-color: #555;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>4G STEEL ENTERPRISE</h1>
+    </header>
+    <div class="navbar">
+        <a href="homepage.html">Home</a>
+        <a href="homepage.html#about">About</a>
+        <a href="homepage.html#service">Services</a>
+        <a href="homepage.html#contact">Contact</a>
+        <a href="estimate.html#calculator">Calculator</a>
+    </div>
+       <div class="container">
+        <div class="box-container">
+            <div class="row">
+                <div id="boxA" class="box">
+                    <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/454930041_481105488006050_6504726069797570947_n.jpg?stp=c0.33.300.300a_dst-jpg_s206x206&_nc_cat=110&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHdVOyGePIWWJZ3UWw2fjpHh2VaHn1Z42-HZVoefVnjb81MypQm8U0us_68QBoai5DeziwbBWETg3ne1r-JCIFI&_nc_ohc=utLKoqLmi4gQ7kNvgFXQosB&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=A5yiIsRYbWa9GVfO3NgEkci&oh=00_AYCbGzQr_U_Jp6MC5ZlNrlQBX4Hp4WWaWO5-BvwvzMNzJw&oe=67149A0D" alt="pillar">
+                    <div class="text">15FT PILLAR</div>
+                </div>
+                <div id="boxB" class="hidden-box">
+                    <h2>16mm 15ft Pillar</h2>
+                    <p>Strong and durable 15ft pillar for construction projects.</p>
+                    <p>Price: GHS 130.00</p>
+                    <button class="buy-btn" onclick="alert('Purchase 15ft Pillar')">Buy Now</button>
+                </div>
+                <div class="arrow"></div>
+            </div>
+            <div class="row">
+                <div id="boxC" class="box">
+                    <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/281337976_105740968813290_6029252528143740416_n.jpg?stp=c144.0.432.432a_dst-jpg_s206x206&_nc_cat=107&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeGJ1CTqh-5CFAar7GGCT5zQp4afmoTZSqanhp-ahNlKpgXDls8KiJaRFGmRWpAg5i1-AL-wZgAsiKHLg0c_qHMA&_nc_ohc=TRCSlYB3myUQ7kNvgFtNM2G&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=AudFVD7y6prnBrELmCnyV3i&oh=00_AYDw7oOapZoQJMDQ-IBSOX2XJ7nEt5C1m9EmeGXI2in6kg&oe=6715864B" alt="pillar">
+                    <div class="text">8FT PILLAR</div>
+                </div>
+                <div id="boxD" class="hidden-box">
+                    <h2>16mm 8ft Pillar</h2>
+                    <p>High-quality pillar of your buildings.</p>
+                    <p>Price: GHS 80.00</p>
+                    <button class="buy-btn" onclick="alert('Purchase Roofing Sheet')">Buy Now</button>
+                </div>
+                <div class="arrow"></div>
+            </div>
+            <div class="row">
+                <div id="boxE" class="box">
+                    <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/457624743_495287593254506_7098222499355804248_n.jpg?stp=c167.0.287.287a_dst-jpg_s206x206&_nc_cat=102&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHLDHdgBF2_kbio48cT_d0wjm89G17vOOKObz0bXu844k1aY2fp6FPUt8ApEM3bkheqWC9Y2bZkb4PsdMBH0OYw&_nc_ohc=Tdz0Xgwg7SMQ7kNvgHr7Eg1&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AhcMwuFCupjrEyZIc_Gg2Fb&oh=00_AYArc0a_-mnCRtMz391gv26ZAu7ZXdwoCQgDbkkc2o3ATQ&oe=6715A9AB" alt="mat">
+                    <div class="text">MATS</div>
+                </div>
+                <div id="boxF" class="hidden-box">
+                        <h2>14mm Mat</h2>
+                        <p>Strong Mat for various applications.</p>
+                        <p>Price: GHS 80.00</p>
+                        <button class="buy-btn" onclick="alert('Purchase Binding Wire')">Buy Now</button>
+                    </div>
+                    <div class="arrow"></div>
+                </div>
+                <div class="row">
+                    <div id="boxE" class="box">
+                        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/454737779_481466511303281_2368441789210996795_n.jpg?stp=c0.33.300.300a_dst-jpg_s206x206&_nc_cat=104&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeG0fgTtTZKRjVGZ-wUWBdNl_Tz93Qpt5GH9PP3dCm3kYTylDmFtekPOXkQvMsaYDRYFGGiz7Rzzomroh2qZMDQO&_nc_ohc=qWOuH7mt0PoQ7kNvgE_J5mI&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=ADKgElsam51RfjAeACTurB0&oh=00_AYCbwgQXt-m2iyTZVAsDkK7EB1L7dvQda4Dh1QuhI9d2WA&oe=67157A3B">
+                        <div class="text">Binding Wire</div>
+                    </div>
+                    <div id="boxF" class="hidden-box">
+                            <h2>Binding Wire</h2>
+                            <p>Flexible and strong binding wire for various applications.</p>
+                            <p>Price: GHS 75.00</p>
+                            <button class="buy-btn" onclick="alert('Purchase Binding Wire')">Buy Now</button>
+                        </div>
+                        <div class="arrow"></div>
+                    </div>
+                <div class="row">
+                    <div id="boxG" class="box">
+                        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/280905869_105740228813364_1997155579076131223_n.jpg?stp=c0.290.720.720a_dst-jpg_s206x206&_nc_cat=104&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeGPyRnihtRKcLCquXjLMdKYM0kvShr-XbQzSS9KGv5dtAVtR_oZ9THnr491LtVnWnbQ8TQo1JaNQX0Z4LC_P5ZG&_nc_ohc=W3U51rzID3YQ7kNvgELbMyi&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AcpFChQQw_k3s7pk0-n7fCK&oh=00_AYCIbX0e3RzK3fraSo-R0r9wxm_OsMjLZt4_t59-uSPS8w&oe=6715ABEF">
+                        <div class="text">5ft Pillar</div>
+                    </div>
+                    <div id="boxH" class="hidden-box">
+                        <h2>12mm 5ft Pillar</h2>
+                        <p>Strong and durable 15ft pillar for construction projects.</p>
+                        <p>Price: GHS 60.00</p>
+                        <button class="buy-btn" onclick="alert('Purchase Custom Item')">Buy Now</button>
+                    </div>
+                    <div class="arrow"></div>
+                </div>
+                <div class="row">
+                    <div id="boxG" class="box">
+                        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/281136929_105739455480108_4733430229361395850_n.jpg?stp=c143.0.429.429a_dst-jpg_s206x206&_nc_cat=100&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHXz9_eA3jWQtsrizygsZqag6KNdGi8m-6Doo10aLyb7s3EPTAvDap4U_XImn4tO20zsKaMygnb6x82nO8jw5vX&_nc_ohc=L7JqBXgUlnIQ7kNvgFnHrDc&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=AcpFChQQw_k3s7pk0-n7fCK&oh=00_AYB9F6i5zy0JWG2Ep7SyU0VPZ6NYi3-KNA23Y0BiteLZQw&oe=671587DE">
+                        <div class="text">Rings</div>
+                    </div>
+                    <div id="boxH" class="hidden-box">
+                        <h2>3/8mm Rings</h2>
+                        <p>This is strong and will help your pillars be High-quality</p>
+                        <p>Price: GHS 5.00</p>
+                        <button class="buy-btn" onclick="alert('Purchase Custom Item')">Buy Now</button>
+                    </div>
+                    <div class="arrow"></div>
+                </div>
+                <div class="row">
+                    <div id="boxG" class="box">
+                        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/457624901_495281593255106_4311497645262284968_n.jpg?stp=c33.0.194.194a_dst-jpg_s194x194&_nc_cat=108&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHz-1hfSi_3soIQd8xmAMIDDt0HSkKjmsMO3QdKQqOaw44_U8FLvGWhfIgttWHQYHo6M601SWCzUjsdlhiU7Qzy&_nc_ohc=A7RljZyZguwQ7kNvgEpcTED&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=A7LQL4iRtDjKqWOmcMbHElA&oh=00_AYCHbvE59LHOuXl_zOluZWGxcjQdnEw8hXtTBCskMuSolA&oe=6715A254">
+                        <div class="text">16mm Rod</div>
+                    </div>
+                    <div id="boxH" class="hidden-box">
+                        <h2>16mm Rod</h2>
+                        <p>strong and high-quality 16mm Rod</p>
+                        <p>Price: GHS 132.00</p>
+                        <button class="buy-btn" onclick="alert('Purchase Custom Item')">Buy Now</button>
+                    </div>
+                    <div class="arrow"></div>
+                </div>
+                <div class="row">
+                    <div id="boxG" class="box">
+                        <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/454760309_481466517969947_2404518766371280605_n.jpg?stp=c51.0.199.199a_dst-jpg_s199x199&_nc_cat=111&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeGm-dOW4HBnpcG14GZhUbZMFoxaqgvNMGMWjFqqC80wY-Fci27FkkGtXNQ6FWO3SJPv168iZd7c1kXKK-H6JWq8&_nc_ohc=7mqBWENyt1oQ7kNvgGQzixn&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=ADKgElsam51RfjAeACTurB0&oh=00_AYCofyuLO2796iFMsTU-__RLpnf6UsGNRDfTGXgJhyHC1Q&oe=6715ACA2">
+                        <div class="text">12mm Rods</div>
+                    </div>
+                    <div id="boxH" class="hidden-box">
+                        <h2>12mm Rods</h2>
+                        <p>strong and high-quality 12mm Rod</p>
+                        <p>Price: GHS 74.00</p>
+                        <button class="buy-btn" onclick="alert('Purchase Custom Item')">Buy Now</button>
+                    </div>
+                    <div class="arrow"></div>
+                </div>
+                <div class="row">
+                    <div id="boxG" class="box">
+                        <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/454926032_481466501303282_1488721336668380225_n.jpg?stp=c38.0.225.225a_dst-jpg_s206x206&_nc_cat=102&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHnjVnrgh7TONLFLmDsFoGck5ERC-kM8oaTkREL6Qzyhj-TALnFjxwUkv-5mWqIq2EjUKJ9oH4fGl7N9Ij05w8w&_nc_ohc=cyDVZcxadIIQ7kNvgGsej7f&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=ADKgElsam51RfjAeACTurB0&oh=00_AYC9_aRrT82IfRSS6ZXycP0D2xHDN0dnbGlYfU0vl7_wlQ&oe=671577B2">
+                        <div class="text">10mm Rod</div>
+                    </div>
+                    <div id="boxH" class="hidden-box">
+                        <h2>10mm Rod</h2>
+                        <p>strong and high-quality 10mm Rod</p>
+                        <p>Price: GHS 44.00</p>
+                        <button class="buy-btn" onclick="alert('Purchase Custom Item')">Buy Now</button>
+                    </div>
+                    <div class="arrow"></div>
+                </div>
+            </div>
+    
+    <div class="content">
+        <div class="calculator" id="calculator">
+            <h2><u>Rod Price Calculator</u></h2>
+            <select id="classOfRod">
+                <option value="21.40,6420">3/8mm</option>
+                <option value="43.89,7900.20">10mm</option>
+                <option value="61.34,9201">11mm</option>
+                <option value="73.60,9200">12mm</option>
+                <option value="96.85,9200.75">14mm</option>
+                <option value="131.93,9200.10">16mm</option>
+                <option value="207.78,9350.10">20mm</option>
+            </select>
+            <input type="number" id="noOfRod" placeholder="Enter No of Rods">
+            <input type="number" id="noOfTons" placeholder="Enter Tons (Optional)">
+            <input type="number" id="noOfBindingWire" placeholder="Enter No of Binding Wires">
+            <input type="button" value="Calculate Total Price" onclick="calculatePrice()">
+            <div class="result" id="result"></div>
+            <div class="price-info" id="priceInfo">
+                <hr style="color: rgba(0, 0, 0, 1);">
+                <div id="pricePerRod">Price per Rod: GH₵21.40</div>
+                <div id="pricePerTon">Price per Ton: GH₵6420.00</div>
+                <div id="pricePerBindingwire">Binding Wire: GH₵80.00</div>
+            </div>
+        </div>
+    </div>
+       </div>
+            <footer>
+                <p>&copy; 2000 4G STEEL ENTERPRISE. All rights reserved.</p>
+            </footer> 
+            <script>
+                function calculatePrice() {
+                    var rodPriceInfo = document.getElementById('classOfRod').value.split(",");
+                    var pricePerRod = parseFloat(rodPriceInfo[0]);
+                    var pricePerTon = parseFloat(rodPriceInfo[1]);
+        
+                    var noOfRod = parseFloat(document.getElementById('noOfRod').value) || 0;
+                    var noOfTons = parseFloat(document.getElementById('noOfTons').value) || 0;
+                    var noOfBindingWire = parseFloat(document.getElementById('noOfBindingWire').value) || 0;
+        
+                    var totalPrice = 0;
+                    var bindingWirePrice = 80;
+        
+                    if (noOfRod > 0) {
+                        totalPrice += pricePerRod * noOfRod;
+                    }
+        
+                    if (noOfTons > 0) {
+                        totalPrice += pricePerTon * noOfTons;
+                    }
+        
+                    if (noOfBindingWire > 0) {
+                        totalPrice += bindingWirePrice * noOfBindingWire;
+                    }
+        
+                    var resultDiv = document.getElementById('result');
+                    var priceInfoDiv = document.getElementById('priceInfo');
+        
+                    if (totalPrice > 0) {
+                        resultDiv.textContent = "Total Price: GH₵" + totalPrice.toFixed(2);
+                        resultDiv.style.opacity = 1;
+        
+                        priceInfoDiv.style.display = 'block';
+                        priceInfoDiv.style.opacity = 1;
+        
+                        
+                        document.getElementById('pricePerRod').textContent = "Price per Rod: GH₵" + pricePerRod.toFixed(2);
+                        document.getElementById('pricePerTon').textContent = "Price per Ton: GH₵" + pricePerTon.toFixed(2);
+                    } else {
+                        resultDiv.textContent = "";
+                        resultDiv.style.opacity = 0;
+        
+                        
+                        priceInfoDiv.style.display = 'none';
+                        priceInfoDiv.style.opacity = 0;
+                    }
+                }
+            </script>
+               
+    </body>
+    </html>
+    
